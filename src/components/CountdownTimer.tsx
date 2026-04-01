@@ -1,0 +1,92 @@
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Clock } from "lucide-react";
+
+const CountdownTimer = () => {
+  const [days, setDays] = useState(0);
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    // ~11 months ago
+    const lastTalk = new Date();
+    lastTalk.setMonth(lastTalk.getMonth() - 11);
+
+    const update = () => {
+      const now = new Date().getTime();
+      const diff = now - lastTalk.getTime();
+      setDays(Math.floor(diff / (1000 * 60 * 60 * 24)));
+      setHours(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+      setMinutes(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
+      setSeconds(Math.floor((diff % (1000 * 60)) / 1000));
+    };
+
+    update();
+    const interval = setInterval(update, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const blocks = [
+    { value: days, label: "Din" },
+    { value: hours, label: "Ghante" },
+    { value: minutes, label: "Minute" },
+    { value: seconds, label: "Second" },
+  ];
+
+  return (
+    <section className="py-20 bg-background">
+      <div className="mx-auto max-w-3xl px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <Clock className="mx-auto mb-4 h-8 w-8 text-primary/60" />
+          <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
+            Aakhri baar baat hue...
+          </h2>
+          <p className="mt-2 text-sm text-muted-foreground">aur har second count ho raha hai 🤍</p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mt-10 flex justify-center gap-3 md:gap-6"
+        >
+          {blocks.map((block, i) => (
+            <motion.div
+              key={block.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 + i * 0.1 }}
+              className="flex flex-col items-center"
+            >
+              <div className="glass-card rounded-2xl px-4 py-5 md:px-8 md:py-6 min-w-[70px] md:min-w-[100px]">
+                <span className="font-display text-3xl font-bold text-primary md:text-5xl">
+                  {String(block.value).padStart(2, "0")}
+                </span>
+              </div>
+              <span className="mt-2 text-xs text-muted-foreground font-body">{block.label}</span>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.8 }}
+          className="mt-8 font-display text-sm italic text-muted-foreground"
+        >
+          "Par count karte raha... kyunki bhula nahi paya"
+        </motion.p>
+      </div>
+    </section>
+  );
+};
+
+export default CountdownTimer;
