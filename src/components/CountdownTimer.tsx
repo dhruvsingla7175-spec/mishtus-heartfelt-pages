@@ -45,7 +45,7 @@ const CountdownTimer = () => {
             Aakhri baar baat hue...
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            13 May 2024 se — aur har second count ho raha hai 🤍
+            13 May 2025 se — aur har second count ho raha hai 🤍
           </p>
         </motion.div>
 
