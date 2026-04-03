@@ -82,7 +82,7 @@ const ThingsIMiss = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={next}
-            className="shrink-0 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary"
+            className="shrink-0 h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary flex flex-row"
           >
             <ChevronRight size={20} />
           </motion.button>
