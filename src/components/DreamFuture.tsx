@@ -76,7 +76,7 @@ const DreamFuture = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-4xl font-bold text-foreground md:text-5xl">
+          <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
             Ek Din... 🌙
           </h2>
           <p className="mt-3 text-sm text-muted-foreground">
