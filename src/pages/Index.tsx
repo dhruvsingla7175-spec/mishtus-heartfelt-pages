@@ -47,7 +47,7 @@ const Index = () => {
         <div id="stars"><StarWall /></div>
         <div id="gallery"><MemoryGallery /></div>
         <div id="reasons"><ReasonsILoveYou /></div>
-        <div id="spotify"><SpotifyEmbed /></div>
+        
         <div id="daily"><DailyMessage /></div>
         <div id="dreams"><DreamFuture /></div>
         <SecretMessage />
