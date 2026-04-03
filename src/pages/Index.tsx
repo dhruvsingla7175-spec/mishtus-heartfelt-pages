@@ -7,7 +7,7 @@ import ThingsIMiss from "@/components/ThingsIMiss";
 import StarWall from "@/components/StarWall";
 import MemoryGallery from "@/components/MemoryGallery";
 import ReasonsILoveYou from "@/components/ReasonsILoveYou";
-import SpotifyEmbed from "@/components/SpotifyEmbed";
+
 import DailyMessage from "@/components/DailyMessage";
 import DreamFuture from "@/components/DreamFuture";
 import SecretMessage from "@/components/SecretMessage";
@@ -47,7 +47,7 @@ const Index = () => {
         <div id="stars"><StarWall /></div>
         <div id="gallery"><MemoryGallery /></div>
         <div id="reasons"><ReasonsILoveYou /></div>
-        <div id="spotify"><SpotifyEmbed /></div>
+        
         <div id="daily"><DailyMessage /></div>
         <div id="dreams"><DreamFuture /></div>
         <SecretMessage />
