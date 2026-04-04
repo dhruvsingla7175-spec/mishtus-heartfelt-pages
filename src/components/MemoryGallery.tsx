@@ -1,21 +1,26 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, X, Image } from "lucide-react";
+import childhood1 from "@/assets/childhood-1.png";
+import childhood2 from "@/assets/childhood-2.png";
 
-const placeholders = Array.from({ length: 8 }, (_, i) => ({
-  id: i,
-  caption: [
-    "Pehli baar dekha tha...",
-    "Woh din yaad hai?",
-    "Teri woh smile 🤍",
-    "Kaash yeh moment ruk jaata",
-    "Bas tujhe dekhta raha",
-    "Yeh photo meri favourite hai",
-    "Tu kitni khoobsurat hai",
-    "Hamesha yaad rahega",
-  ][i],
-  height: [280, 340, 240, 300, 320, 260, 350, 290][i],
-}));
+const galleryItems = [
+  { id: 0, src: childhood1, caption: "Choote hote ke photos 🤍 isse proof hota hai hamaare ladke ladko se kaam hote hai", height: 340 },
+  { id: 1, src: childhood2, caption: "Family wali photo — kitne cute the hum 🥺", height: 340 },
+  ...Array.from({ length: 6 }, (_, i) => ({
+    id: i + 2,
+    src: null as string | null,
+    caption: [
+      "Woh din yaad hai?",
+      "Kaash yeh moment ruk jaata",
+      "Bas tujhe dekhta raha",
+      "Yeh photo meri favourite hai",
+      "Tu kitni khoobsurat hai",
+      "Hamesha yaad rahega",
+    ][i],
+    height: [240, 300, 320, 260, 350, 290][i],
+  })),
+];
 
 const MemoryGallery = () => {
   const [lightbox, setLightbox] = useState<number | null>(null);
@@ -39,7 +44,7 @@ const MemoryGallery = () => {
 
         {/* Masonry grid */}
         <div className="columns-2 gap-4 md:columns-3 lg:columns-4">
-          {placeholders.map((item) => (
+          {galleryItems.map((item) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 30 }}
@@ -50,11 +55,14 @@ const MemoryGallery = () => {
               style={{ height: item.height }}
               onClick={() => setLightbox(item.id)}
             >
-              {/* Placeholder card */}
-              <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-blush/40 transition-colors group-hover:bg-blush/60">
-                <Heart className="h-8 w-8 text-primary/40 animate-heartbeat" fill="currentColor" />
-                <Image className="h-5 w-5 text-primary/30" />
-              </div>
+              {item.src ? (
+                <img src={item.src} alt={item.caption} className="h-full w-full object-cover" />
+              ) : (
+                <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-blush/40 transition-colors group-hover:bg-blush/60">
+                  <Heart className="h-8 w-8 text-primary/40 animate-heartbeat" fill="currentColor" />
+                  <Image className="h-5 w-5 text-primary/30" />
+                </div>
+              )}
 
               {/* Hover caption overlay */}
               <div className="absolute inset-0 flex items-end bg-foreground/0 p-4 transition-all group-hover:bg-foreground/40 group-hover:backdrop-blur-sm">
@@ -90,15 +98,21 @@ const MemoryGallery = () => {
               >
                 <X size={20} />
               </button>
-              <div className="flex h-48 w-full items-center justify-center rounded-xl bg-blush/30">
-                <Heart className="h-16 w-16 text-primary/30" fill="currentColor" />
-              </div>
+              {galleryItems[lightbox].src ? (
+                <img src={galleryItems[lightbox].src} alt={galleryItems[lightbox].caption} className="max-h-[60vh] w-full rounded-xl object-contain" />
+              ) : (
+                <div className="flex h-48 w-full items-center justify-center rounded-xl bg-blush/30">
+                  <Heart className="h-16 w-16 text-primary/30" fill="currentColor" />
+                </div>
+              )}
               <p className="font-display text-lg italic text-foreground">
-                {placeholders[lightbox].caption}
+                {galleryItems[lightbox].caption}
               </p>
-              <p className="text-xs text-muted-foreground">
-                Photo / video yahan aayegi 🤍
-              </p>
+              {!galleryItems[lightbox].src && (
+                <p className="text-xs text-muted-foreground">
+                  Photo / video yahan aayegi 🤍
+                </p>
+              )}
             </motion.div>
           </motion.div>
         )}
