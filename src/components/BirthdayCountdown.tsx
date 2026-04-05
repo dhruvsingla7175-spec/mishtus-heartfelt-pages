@@ -44,7 +44,7 @@ const BirthdayCountdown = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-romantic relative overflow-hidden">
+    <section className="py-16 md:py-20 bg-gradient-romantic relative overflow-hidden">
       {/* Floating party emojis */}
       {["🎂", "🎈", "🎁", "🎉", "🥳", "✨", "💖", "🌸"].map((emoji, i) => (
         <motion.div
