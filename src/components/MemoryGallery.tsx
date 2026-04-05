@@ -31,7 +31,7 @@ const MemoryGallery = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: item.id * 0.03 }}
-              className="group relative mb-4 cursor-pointer overflow-hidden rounded-xl"
+              className="group relative mb-3 md:mb-4 cursor-pointer overflow-hidden rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300"
               style={{ height: item.height }}
               onClick={() => setLightbox(item.id)}
             >
