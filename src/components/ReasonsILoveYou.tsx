@@ -46,7 +46,7 @@ const ReasonsILoveYou = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, type: "spring", damping: 15 }}
               whileHover={{ scale: 1.05, y: -4 }}
-              className="glass-card rounded-full px-5 py-3 flex items-center gap-2 cursor-default"
+              className="glass-card rounded-full px-4 py-2.5 md:px-5 md:py-3 flex items-center gap-2 cursor-default"
             >
               <Heart className="h-3 w-3 text-primary shrink-0" fill="currentColor" />
               <span className="font-display text-sm italic text-foreground">{reason}</span>
