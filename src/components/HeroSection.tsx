@@ -204,7 +204,7 @@ const HeroSection = () => {
           transition={{ delay: 0.8, duration: 0.6 }}
           className="mt-6 min-h-[2em]"
         >
-          <span className="font-display text-xl italic text-muted-foreground md:text-2xl">
+          <span className="font-display text-xl italic text-muted-foreground md:text-2xl whitespace-pre-wrap">
             {typed}
           </span>
           <motion.span
