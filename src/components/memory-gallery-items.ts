@@ -38,6 +38,15 @@ import gallery37 from "@/assets/gallery-37.png";
 import gallery38 from "@/assets/gallery-38.png";
 import gallery39 from "@/assets/gallery-39.png";
 import gallery40 from "@/assets/gallery-40.png";
+import gallery41 from "@/assets/gallery-41.png";
+import gallery42 from "@/assets/gallery-42.png";
+import gallery43 from "@/assets/gallery-43.png";
+import gallery44 from "@/assets/gallery-44.png";
+import gallery45 from "@/assets/gallery-45.png";
+import gallery46 from "@/assets/gallery-46.png";
+import gallery47 from "@/assets/gallery-47.png";
+import gallery48 from "@/assets/gallery-48.png";
+import gallery49 from "@/assets/gallery-49.png";
 
 export type GalleryItem = {
   id: number;
@@ -87,5 +96,15 @@ export const galleryItems: GalleryItem[] = [
   { id: 36, src: gallery37, caption: "Cutie squad selfie 🐶", height: 340, type: "image" },
   { id: 37, src: gallery39, caption: "Shaant si back pose 🌿", height: 360, type: "image" },
   { id: 38, src: gallery40, caption: "Yellow aur black moments 🖤", height: 360, type: "image" },
-  { id: 39, src: "/videos/gallery-video.mp4", caption: "Hamare special moments 🎬", height: 320, type: "video" },
+  { id: 39, src: gallery41, caption: "Mirror selfie vibes ✨", height: 360, type: "image" },
+  { id: 40, src: gallery42, caption: "Cafe wali raat 🍕", height: 340, type: "image" },
+  { id: 41, src: gallery43, caption: "Mahila mitra squad 😂❤️", height: 360, type: "image" },
+  { id: 42, src: gallery44, caption: "LOVE wali photo 💗", height: 340, type: "image" },
+  { id: 43, src: gallery45, caption: "Love you wali selfie 💙", height: 360, type: "image" },
+  { id: 44, src: gallery46, caption: "Siblings ke saath 🤍", height: 320, type: "image" },
+  { id: 45, src: gallery47, caption: "Choti si cutie 💚", height: 340, type: "image" },
+  { id: 46, src: gallery48, caption: "Mandir mein teeno ✨", height: 360, type: "image" },
+  { id: 47, src: gallery49, caption: "Princess in flowers 🌸", height: 360, type: "image" },
+  { id: 48, src: "/videos/gallery-video.mp4", caption: "Hamare special moments 🎬", height: 320, type: "video" },
+  { id: 49, src: "/videos/gallery-video-2.mp4", caption: "Ek aur special moment 🎥", height: 320, type: "video" },
 ];
