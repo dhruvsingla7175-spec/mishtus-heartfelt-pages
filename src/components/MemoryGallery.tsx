@@ -1,25 +1,39 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, X, Image } from "lucide-react";
+import { Heart, X, Play } from "lucide-react";
 import childhood1 from "@/assets/childhood-1.png";
 import childhood2 from "@/assets/childhood-2.png";
+import gallery3 from "@/assets/gallery-3.png";
+import gallery4 from "@/assets/gallery-4.png";
+import gallery5 from "@/assets/gallery-5.png";
+import gallery6 from "@/assets/gallery-6.png";
+import gallery7 from "@/assets/gallery-7.png";
+import gallery8 from "@/assets/gallery-8.png";
+import gallery9 from "@/assets/gallery-9.png";
+import gallery10 from "@/assets/gallery-10.png";
+import gallery11 from "@/assets/gallery-11.png";
 
-const galleryItems = [
-  { id: 0, src: childhood1, caption: "Proof hota hai hamaare ladke ladko se kaam thodi hai", height: 340 },
-  { id: 1, src: childhood2, caption: "Mishtuuu bachuu", height: 340 },
-  ...Array.from({ length: 6 }, (_, i) => ({
-    id: i + 2,
-    src: null as string | null,
-    caption: [
-      "Woh din yaad hai?",
-      "Kaash yeh moment ruk jaata",
-      "Bas tujhe dekhta raha",
-      "Yeh photo meri favourite hai",
-      "Tu kitni khoobsurat hai",
-      "Hamesha yaad rahega",
-    ][i],
-    height: [240, 300, 320, 260, 350, 290][i],
-  })),
+type GalleryItem = {
+  id: number;
+  src: string;
+  caption: string;
+  height: number;
+  type: "image" | "video";
+};
+
+const galleryItems: GalleryItem[] = [
+  { id: 0, src: childhood1, caption: "Proof hota hai hamaare ladke ladko se kaam thodi hai", height: 340, type: "image" },
+  { id: 1, src: childhood2, caption: "Mishtuuu bachuu", height: 340, type: "image" },
+  { id: 2, src: gallery3, caption: "Kitni pyaari lag rahi hai 🤍", height: 320, type: "image" },
+  { id: 3, src: gallery4, caption: "Holi wali masti 🎨", height: 280, type: "image" },
+  { id: 4, src: gallery5, caption: "Friends ke saath 💕", height: 360, type: "image" },
+  { id: 5, src: gallery6, caption: "Saari yaadein ek saath 🥺", height: 380, type: "image" },
+  { id: 6, src: gallery7, caption: "Cuties 🤍", height: 300, type: "image" },
+  { id: 7, src: gallery8, caption: "Garden mein masti 🌿", height: 280, type: "image" },
+  { id: 8, src: gallery9, caption: "Princess vibes ✨", height: 340, type: "image" },
+  { id: 9, src: gallery10, caption: "Swag wali photo 😎", height: 260, type: "image" },
+  { id: 10, src: gallery11, caption: "Birthday celebration 🎂", height: 340, type: "image" },
+  { id: 11, src: "/videos/gallery-video.mp4", caption: "Hamare special moments 🎬", height: 320, type: "video" },
 ];
 
 const MemoryGallery = () => {
@@ -50,18 +64,20 @@ const MemoryGallery = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: item.id * 0.1 }}
+              transition={{ delay: item.id * 0.08 }}
               className="group relative mb-4 cursor-pointer overflow-hidden rounded-xl"
               style={{ height: item.height }}
               onClick={() => setLightbox(item.id)}
             >
-              {item.src ? (
-                <img src={item.src} alt={item.caption} className="h-full w-full object-cover" />
-              ) : (
-                <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-blush/40 transition-colors group-hover:bg-blush/60">
-                  <Heart className="h-8 w-8 text-primary/40 animate-heartbeat" fill="currentColor" />
-                  <Image className="h-5 w-5 text-primary/30" />
+              {item.type === "video" ? (
+                <div className="relative h-full w-full">
+                  <video src={item.src} className="h-full w-full object-cover" muted preload="metadata" />
+                  <div className="absolute inset-0 flex items-center justify-center bg-foreground/20">
+                    <Play className="h-12 w-12 text-primary-foreground drop-shadow-lg" fill="currentColor" />
+                  </div>
                 </div>
+              ) : (
+                <img src={item.src} alt={item.caption} className="h-full w-full object-cover" />
               )}
 
               {/* Hover caption overlay */}
@@ -98,21 +114,23 @@ const MemoryGallery = () => {
               >
                 <X size={20} />
               </button>
-              {galleryItems[lightbox].src ? (
-                <img src={galleryItems[lightbox].src} alt={galleryItems[lightbox].caption} className="max-h-[60vh] w-full rounded-xl object-contain" />
+              {galleryItems[lightbox].type === "video" ? (
+                <video
+                  src={galleryItems[lightbox].src}
+                  controls
+                  autoPlay
+                  className="max-h-[60vh] w-full rounded-xl"
+                />
               ) : (
-                <div className="flex h-48 w-full items-center justify-center rounded-xl bg-blush/30">
-                  <Heart className="h-16 w-16 text-primary/30" fill="currentColor" />
-                </div>
+                <img
+                  src={galleryItems[lightbox].src}
+                  alt={galleryItems[lightbox].caption}
+                  className="max-h-[60vh] w-full rounded-xl object-contain"
+                />
               )}
               <p className="font-display text-lg italic text-foreground">
                 {galleryItems[lightbox].caption}
               </p>
-              {!galleryItems[lightbox].src && (
-                <p className="text-xs text-muted-foreground">
-                  Photo / video yahan aayegi 🤍
-                </p>
-              )}
             </motion.div>
           </motion.div>
         )}
