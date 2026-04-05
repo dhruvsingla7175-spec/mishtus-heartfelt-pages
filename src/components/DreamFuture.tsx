@@ -3,7 +3,7 @@ import { Heart } from "lucide-react";
 
 const DreamFuture = () => {
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-background relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(4)].map((_, i) => (
           <motion.div
