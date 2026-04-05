@@ -67,7 +67,7 @@ const BirthdayCountdown = () => {
         </motion.div>
       ))}
 
-      <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
+      <div className="relative z-10 mx-auto max-w-3xl px-4 md:px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

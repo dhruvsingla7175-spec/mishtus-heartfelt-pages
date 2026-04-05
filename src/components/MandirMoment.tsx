@@ -17,7 +17,7 @@ const MandirMoment = () => {
         </motion.div>
       ))}
 
-      <div className="mx-auto max-w-2xl px-6">
+      <div className="mx-auto max-w-2xl px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
