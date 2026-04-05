@@ -22,6 +22,16 @@ import gallery18 from "@/assets/gallery-18.png";
 import gallery19 from "@/assets/gallery-19.png";
 import gallery20 from "@/assets/gallery-20.png";
 import gallery21 from "@/assets/gallery-21.png";
+import gallery22 from "@/assets/gallery-22.png";
+import gallery23 from "@/assets/gallery-23.png";
+import gallery24 from "@/assets/gallery-24.png";
+import gallery25 from "@/assets/gallery-25.png";
+import gallery26 from "@/assets/gallery-26.png";
+import gallery27 from "@/assets/gallery-27.png";
+import gallery28 from "@/assets/gallery-28.png";
+import gallery29 from "@/assets/gallery-29.png";
+import gallery30 from "@/assets/gallery-30.png";
+import gallery31 from "@/assets/gallery-31.png";
 
 type GalleryItem = {
   id: number;
@@ -53,7 +63,17 @@ const galleryItems: GalleryItem[] = [
   { id: 18, src: gallery19, caption: "Shopping wali vibes 🛍️", height: 340, type: "image" },
   { id: 19, src: gallery20, caption: "Mickey mouse ki fan 🐭", height: 360, type: "image" },
   { id: 20, src: gallery21, caption: "Aur ek mirror selfie 📸", height: 340, type: "image" },
-  { id: 21, src: "/videos/gallery-video.mp4", caption: "Hamare special moments 🎬", height: 320, type: "video" },
+  { id: 21, src: gallery22, caption: "Beach pe masti 🏖️", height: 360, type: "image" },
+  { id: 22, src: gallery23, caption: "Night vibes 🌙", height: 340, type: "image" },
+  { id: 23, src: gallery24, caption: "Cruise wali raat ✨", height: 340, type: "image" },
+  { id: 24, src: gallery25, caption: "Kitni pyaari masi hai 🤍", height: 320, type: "image" },
+  { id: 25, src: gallery26, caption: "Papa ke saath 💙", height: 380, type: "image" },
+  { id: 26, src: gallery27, caption: "Airport buddy 🛫", height: 300, type: "image" },
+  { id: 27, src: gallery28, caption: "Late night memories ❤️", height: 360, type: "image" },
+  { id: 28, src: gallery29, caption: "Mele ki yaadein 🎡", height: 360, type: "image" },
+  { id: 29, src: gallery30, caption: "Friends collage 🤍", height: 340, type: "image" },
+  { id: 30, src: gallery31, caption: "Ethnic look 💛", height: 360, type: "image" },
+  { id: 31, src: "/videos/gallery-video.mp4", caption: "Hamare special moments 🎬", height: 320, type: "video" },
 ];
 
 const MemoryGallery = () => {
@@ -84,7 +104,7 @@ const MemoryGallery = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: item.id * 0.05 }}
+              transition={{ delay: item.id * 0.04 }}
               className="group relative mb-4 cursor-pointer overflow-hidden rounded-xl"
               style={{ height: item.height }}
               onClick={() => setLightbox(item.id)}
@@ -100,7 +120,6 @@ const MemoryGallery = () => {
                 <img src={item.src} alt={item.caption} className="h-full w-full object-cover" />
               )}
 
-              {/* Hover caption overlay */}
               <div className="absolute inset-0 flex items-end bg-foreground/0 p-4 transition-all group-hover:bg-foreground/40 group-hover:backdrop-blur-sm">
                 <p className="font-display text-sm italic text-primary-foreground opacity-0 transition-opacity group-hover:opacity-100">
                   {item.caption}
@@ -111,7 +130,6 @@ const MemoryGallery = () => {
         </div>
       </div>
 
-      {/* Lightbox */}
       <AnimatePresence>
         {lightbox !== null && (
           <motion.div
